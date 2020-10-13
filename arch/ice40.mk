@@ -3,7 +3,11 @@ PCF      = boards/$(BOARD).pcf
 ifeq ($(SPEED),up)
 FREQ_PLL = 16
 else
+ifeq ($(SPEED),hx)
+FREQ_PLL = 36
+else
 FREQ_PLL = 48
+endif
 endif
 
 progmem_syn.hex:
