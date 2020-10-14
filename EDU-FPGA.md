@@ -32,7 +32,7 @@ cd ~/edufpga-icicle/
 git clone --recursive https://github.com/riscv/riscv-gnu-toolchain
 cd riscv-gnu-toolchain
 
-./configure --prefix=/opt/riscv --with-arch=rv32gc --with-abi=ilp32d
+./configure --prefix=/opt/riscv
 sudo make # compila e instala
 ```
 
@@ -73,7 +73,7 @@ A definir.
 ```
 export PATH=/opt/riscv/bin/:$PATH
 ```
-Así el comando `riscv32-unknown-elf-gcc` debería ser accesible.
+Así el comando `riscv64-unknown-elf-gcc` debería ser accesible.
 
 - Clonar repositorio, construir y grabar memoria SPI de la EDU-FPGA:
 ```
