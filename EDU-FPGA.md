@@ -122,3 +122,5 @@ VERIFY OK
 cdone: high
 Bye.
 ```
+
+¡Listo! Deberías ver destellar los LEDs de la EDU-FPGA y por la UART (`/dev/ttyUSB1`) deberías observar el mensaje `Hello, world!`.
