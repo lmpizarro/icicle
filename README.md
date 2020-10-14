@@ -34,7 +34,7 @@ Icicle supports several development boards:
 
 * `blackice-ii`: [BlackIce II][blackice-ii-board]
 * `ecp5-evn`: [ECP5 evaluation board][ecp5-evn]
-* `edufpga`: [EDU-CIAA-FPGA iCE40-HX4k board][edu-fpga]
+* `edufpga`: [EDU-CIAA-FPGA iCE40-HX4k board](./EDU-FPGA.md)
 * `ice40hx8k-b-evn`: [iCE40-HX8K breakout board][ice40-hx8k-breakout]
 * `icebreaker`: [iCEBreaker][icebreaker]
 * `upduino`: [UPduino][upduino]
@@ -153,7 +153,6 @@ information and licensing terms.
 [dfu-mode]: https://github.com/mystorm-org/BlackIce-II/wiki/DFU-operations-on-the-BlackIce-II
 [ecp5-evn]: https://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/ECP5EvaluationBoard.aspx
 [ecp5]: https://www.latticesemi.com/Products/FPGAandCPLD/ECP5.aspx
-[edu-fpga]: http://www.proyecto-ciaa.com.ar/devwiki/doku.php?id=desarrollo%3Aedu-fpga
 [ice40-hx8k-breakout]: https://www.latticesemi.com/Products/DevelopmentBoardsAndKits/iCE40HX8KBreakoutBoard.aspx
 [ice40-up5k]: https://www.latticesemi.com/Products/FPGAandCPLD/iCE40Ultra.aspx
 [ice40]: https://www.latticesemi.com/Products/FPGAandCPLD/iCE40.aspx
