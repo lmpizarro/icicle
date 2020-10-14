@@ -81,6 +81,7 @@ cd ~/edufpga-icicle/
 git clone https://github.com/ciaa/icicle.git
 cd icicle
 make BOARD=edufpga
+# antes de ejecutar el siguiente comando, conectar la EDU-FPGA a la PC
 make BOARD=edufpga flash
 ```
 
