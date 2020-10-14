@@ -18,7 +18,7 @@ cd ~/edufpga-icicle/
 
 ```
 sudo apt update
-sudo apt install git make arachne-pnr fpga-icestorm vim autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev gtkterm
+sudo apt install git make arachne-pnr fpga-icestorm vim autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev gtkterm clang libreadline-dev tcl-dev libffi-dev graphviz xdot pkg-config libboost-system-dev libboost-python-dev libboost-filesystem-dev
 ```
 
 ### Toolchain RISC-V
@@ -38,14 +38,30 @@ sudo make # compila e instala
 
 ### Icarus Verilog
 
-### Arachne-pnr
+La instalación necesita privilegios de root.
 
-### IceStorm
-
-### Vim
+```
+cd ~/edufpga-icicle/
+git clone git://github.com/steveicarus/iverilog.git
+cd iverilog
+sh autoconf.sh
+./configure
+make
+sudo make install
+```
 
 ### Yosys
 
+La instalación necesita privilegios de root.
+
+```
+cd ~/edufpga-icicle/
+git clone https://github.com/cliffordwolf/yosys.git
+cd yosys/
+make config-gcc
+make
+sudo make install
+```
 
 ## Uso de las herramientas mediante dockers
 
@@ -58,3 +74,51 @@ A definir.
 export PATH=/opt/riscv/bin/:$PATH
 ```
 Así el comando `riscv32-unknown-elf-gcc` debería ser accesible.
+
+- Clonar repositorio, construir y grabar memoria SPI de la EDU-FPGA:
+```
+cd ~/edufpga-icicle/
+git clone https://github.com/ciaa/icicle.git
+cd icicle
+make BOARD=edufpga
+make BOARD=edufpga flash
+```
+
+Así se ve la salida típica de estos comandos:
+
+```
+$ make BOARD=edufpga
+riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -Wall -Wextra -pedantic -DFREQ=36000000 -Os -ffreestanding -nostartfiles -g -Iprograms/hello   -c -o programs/hello/main.o programs/hello/main.c
+riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -Wall -Wextra -pedantic -DFREQ=36000000 -Os -ffreestanding -nostartfiles -g -Iprograms/hello -Wl,-Tprogmem.lds -o progmem programs/hello/main.o start.o
+riscv64-unknown-elf-objcopy -O binary progmem progmem.bin
+xxd -p -c 4 < progmem.bin > progmem.hex
+yosys -q ice40.ys
+arachne-pnr -q -d 8k -P tq144:4k -o top_syn.asc -p boards/edufpga.pcf top.blif
+icebram progmem_syn.hex progmem.hex < top_syn.asc > top.asc
+icepack top.asc top.bin
+```
+```
+$ make BOARD=edufpga flash
+icetime -t -m -d hx8k -P tq144:4k -p boards/edufpga.pcf -c 36 -r top.rpt top_syn.asc
+// Reading input .pcf file..
+// Reading input .asc file..
+// Reading 8k chipdb file..
+// Creating timing netlist..
+// Timing estimate: 27.43 ns (36.45 MHz)
+// Checking 27.78 ns (36.00 MHz) clock constraint: PASSED.
+iceprog top.bin
+init..
+cdone: high
+reset..
+cdone: low
+flash ID: 0xEF 0x30 0x13 0x00
+file size: 135100
+erase 64kB sector at 0x000000..
+erase 64kB sector at 0x010000..
+erase 64kB sector at 0x020000..
+programming..
+reading..
+VERIFY OK
+cdone: high
+Bye.
+```
