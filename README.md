@@ -34,6 +34,7 @@ Icicle supports several development boards:
 
 * `blackice-ii`: [BlackIce II][blackice-ii-board]
 * `ecp5-evn`: [ECP5 evaluation board][ecp5-evn]
+* `edu-fpga`: [EDU-CIAA-FPGA iCE40-HX4k board][edu-fpga]
 * `ice40hx8k-b-evn`: [iCE40-HX8K breakout board][ice40-hx8k-breakout]
 * `icebreaker`: [iCEBreaker][icebreaker]
 * `upduino`: [UPduino][upduino]
@@ -68,6 +69,10 @@ board).
 * Optionally populate R21 with a zero-ohm resistor to enable the UART TX
   indicator LED.
 
+#### EDU-FPGA
+
+* Run `make BOARD=edufpga flash` to flash the bitstream.
+
 #### iCE40-HX8K breakout board
 
 * Configure the jumpers for flash programming.
@@ -75,7 +80,7 @@ board).
 
 ### Testing
 
-* If your chosen board has built-in LEDs, some of the LEDs should turn on.
+* If your chosen board has built-in LEDs, some of the LEDs should turn on and blink.
 * Run `picocom -b 9600 /dev/ttyUSBn` (replacing `ttyUSBn` with the name of the
   serial port) to connect to the serial port. `Hello, world!` should be printed
   once per second.
@@ -148,6 +153,7 @@ information and licensing terms.
 [dfu-mode]: https://github.com/mystorm-org/BlackIce-II/wiki/DFU-operations-on-the-BlackIce-II
 [ecp5-evn]: https://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/ECP5EvaluationBoard.aspx
 [ecp5]: https://www.latticesemi.com/Products/FPGAandCPLD/ECP5.aspx
+[edu-fpga]: http://www.proyecto-ciaa.com.ar/devwiki/doku.php?id=desarrollo%3Aedu-fpga
 [ice40-hx8k-breakout]: https://www.latticesemi.com/Products/DevelopmentBoardsAndKits/iCE40HX8KBreakoutBoard.aspx
 [ice40-up5k]: https://www.latticesemi.com/Products/FPGAandCPLD/iCE40Ultra.aspx
 [ice40]: https://www.latticesemi.com/Products/FPGAandCPLD/iCE40.aspx
