@@ -34,7 +34,7 @@ Icicle supports several development boards:
 
 * `blackice-ii`: [BlackIce II][blackice-ii-board]
 * `ecp5-evn`: [ECP5 evaluation board][ecp5-evn]
-* `edu-fpga`: [EDU-CIAA-FPGA iCE40-HX4k board][edu-fpga]
+* `edufpga`: [EDU-CIAA-FPGA iCE40-HX4k board][edu-fpga]
 * `ice40hx8k-b-evn`: [iCE40-HX8K breakout board][ice40-hx8k-breakout]
 * `icebreaker`: [iCEBreaker][icebreaker]
 * `upduino`: [UPduino][upduino]
