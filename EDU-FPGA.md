@@ -14,11 +14,11 @@ mkdir -p ~/edufpga-icicle/
 cd ~/edufpga-icicle/
 ```
 
-- Instalar herramientas disponibles en el repositorio (`make`, `vim`, `arachne-pnr` y `icestorm`, entre otras necesarias para construir las herramientas).
+- Instalar dependencias disponibles en el repositorio (`make`, `vim`, entre otras necesarias para construir las herramientas).
 
 ```
 sudo apt update
-sudo apt install git make arachne-pnr fpga-icestorm vim autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev gtkterm clang libreadline-dev tcl-dev libffi-dev graphviz xdot pkg-config libboost-system-dev libboost-python-dev libboost-filesystem-dev
+sudo apt install git make arachne-pnr fpga-icestorm vim autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev gtkterm clang libreadline-dev tcl-dev libffi-dev graphviz xdot pkg-config libboost-system-dev libboost-python-dev libboost-filesystem-dev mercurial libftdi-dev qt5-default python3-dev libboost-all-dev cmake libeigen3-dev
 ```
 
 ### Toolchain RISC-V
@@ -50,22 +50,42 @@ make
 sudo make install
 ```
 
+### IceStorm
+
+La instalación necesita privilegios de root.
+
+```
+cd ~/edufpga-icicle/
+git clone https://github.com/YosysHQ/icestorm.git icestorm
+cd icestorm
+make -j$(nproc)
+sudo make install
+```
+
+### NextPNR
+
+La instalación necesita privilegios de root.
+
+```
+cd ~/edufpga-icicle/
+git clone https://github.com/YosysHQ/nextpnr nextpnr --recursive
+cd nextpnr
+cmake -DARCH=ice40 -DCMAKE_INSTALL_PREFIX=/usr/local .
+make -j$(nproc)
+sudo make install
+```
+
 ### Yosys
 
 La instalación necesita privilegios de root.
 
 ```
 cd ~/edufpga-icicle/
-git clone https://github.com/cliffordwolf/yosys.git
-cd yosys/
-make config-gcc
-make
+git clone https://github.com/YosysHQ/yosys.git yosys
+cd yosys
+make -j$(nproc)
 sudo make install
 ```
-
-## Uso de las herramientas mediante dockers
-
-A definir.
 
 ## Generación del bitstream
 
