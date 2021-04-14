@@ -83,6 +83,7 @@ La instalación necesita privilegios de root.
 cd ~/edufpga-icicle/
 git clone https://github.com/YosysHQ/yosys.git yosys
 cd yosys
+make config-gcc
 make -j$(nproc)
 sudo make install
 ```
