@@ -5,4 +5,4 @@ PACKAGE  = tq144:4k
 FREQ_OSC = 12
 PROGMEM  = ram
 
-PNR      = arachne-pnr
+PNR      = nextpnr-ice40
